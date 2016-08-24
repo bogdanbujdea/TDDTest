@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TDDTestString
 {
@@ -10,6 +6,23 @@ namespace TDDTestString
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(AddLineBreaks("abcdefghijkl", 4));
+        }
+
+        public static string AddLineBreaks(string str, int column)
+        {
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+            if (str.Length < column)
+                return str;
+            var newString = string.Empty;
+            for (int index = 0; index < str.Length; index++)
+            {
+                newString += str[index];
+                if (index%column == 0 && index != 0)
+                    newString += "\n";
+            }
+            return newString;
         }
     }
 }
